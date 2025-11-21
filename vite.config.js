@@ -7,7 +7,13 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     minify: 'terser',
-    chunkSizeWarningLimit: 1000,
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1500,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -19,6 +25,13 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    strictPort: false
-  }
+    strictPort: false,
+    hmr: {
+      host: 'localhost',
+      port: 5173,
+    },
+  },
+  preview: {
+    port: 4173,
+  },
 })
