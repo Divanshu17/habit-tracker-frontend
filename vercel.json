@@ -15,8 +15,6 @@
       "memory": 1024,
       "maxDuration": 60
     }
-  },
-  "buildConfig": {
-    "nodeVersion": "20.x"
   }
+ 
 }
