@@ -13,4 +13,4 @@
   status = 200
 
 [context.production.environment]
-  VITE_API_URL = "YOUR_BACKEND_API_URL"
+  VITE_API_URL = "https://habit-tracker-backend-17.onrender.com"
