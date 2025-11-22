@@ -6,14 +6,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
     reportCompressedSize: false,
     chunkSizeWarningLimit: 1500,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-      },
-    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -26,10 +21,6 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: false,
-    hmr: {
-      host: 'localhost',
-      port: 5173,
-    },
   },
   preview: {
     port: 4173,
