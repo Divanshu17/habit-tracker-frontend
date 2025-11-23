@@ -140,7 +140,7 @@ export default function Home() {
 
       {/* Enhanced Stats Cards with Stagger */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-        { [
+        {[
           {
             value: stats.total,
             label: "Total Habits",
@@ -168,7 +168,7 @@ export default function Home() {
             bgColor: "from-purple-900/30 to-purple-800/20",
             textColor: "text-purple-400",
             icon: "📈",
-          }
+          },
         ].map((stat, idx) => (
           <div
             key={idx}
@@ -273,22 +273,23 @@ export default function Home() {
 
             {/* View Mode Toggle Tabs */}
             <div className="flex gap-2 mb-4 md:mb-6 flex-wrap">
-              {{
-                key: "all",
-                label: "All",
-                color: "from-blue-600 to-blue-700",
-              },
-              {
-                key: "active",
-                label: `Active (${activeHabits.length})`,
-                color: "from-amber-600 to-amber-700",
-              },
-              {
-                key: "completed",
-                label: `Completed (${completedToday.length})`,
-                color: "from-green-600 to-green-700",
-              },
-            }.map((tab) => (
+              {[
+                {
+                  key: "all",
+                  label: "All",
+                  color: "from-blue-600 to-blue-700",
+                },
+                {
+                  key: "active",
+                  label: `Active (${activeHabits.length})`,
+                  color: "from-amber-600 to-amber-700",
+                },
+                {
+                  key: "completed",
+                  label: `Completed (${completedToday.length})`,
+                  color: "from-green-600 to-green-700",
+                },
+              ].map((tab) => (
                 <button
                   key={tab.key}
                   onClick={() => setViewMode(tab.key)}
