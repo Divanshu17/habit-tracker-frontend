@@ -1,21 +1,24 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL;
+// Determine API URL based on environment
+let API_URL;
 
-if (!API_URL) {
-  console.warn('VITE_API_URL not set, using default:', 'https://habit-tracker-backend-17.onrender.com');
+if (import.meta.env.DEV) {
+  // Development: use localhost
+  API_URL = 'http://localhost:5000';
+} else {
+  // Production: use Render backend
+  API_URL = 'https://habit-tracker-backend-17.onrender.com';
 }
 
+console.log('Environment:', import.meta.env.MODE);
+console.log('API URL:', API_URL);
+
 const apiClient = axios.create({
-  baseURL: API_URL || 'https://habit-tracker-backend-17.onrender.com',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
-
-// Log API URL in development
-if (import.meta.env.DEV) {
-  console.log('API URL:', apiClient.defaults.baseURL);
-}
 
 export default apiClient;
