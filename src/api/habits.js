@@ -1,13 +1,8 @@
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: 'http://localhost:5000/api/habits',
-  headers: { 'Content-Type': 'application/json' }
-});
+import apiClient from './client';
 
 export async function getHabits(sort) {
   try {
-    const res = await api.get('/', { params: { sort } });
+    const res = await apiClient.get('/habits', { params: { sort } });
     return res.data;
   } catch (err) {
     console.error('getHabits error', err);
@@ -17,7 +12,7 @@ export async function getHabits(sort) {
 
 export async function createHabit(name) {
   try {
-    const res = await api.post('/', { name });
+    const res = await apiClient.post('/habits', { name });
     return res.data;
   } catch (err) {
     console.error('createHabit error', err);
@@ -27,7 +22,7 @@ export async function createHabit(name) {
 
 export async function toggleHabit(id) {
   try {
-    const res = await api.post(`/${id}/toggle`);
+    const res = await apiClient.post(`/habits/${id}/toggle`);
     return res.data;
   } catch (err) {
     console.error('toggleHabit error', err);
@@ -37,7 +32,7 @@ export async function toggleHabit(id) {
 
 export async function deleteHabit(id) {
   try {
-    const res = await api.delete(`/${id}`);
+    const res = await apiClient.delete(`/habits/${id}`);
     return res.data;
   } catch (err) {
     console.error('deleteHabit error', err);
