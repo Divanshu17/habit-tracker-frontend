@@ -197,7 +197,7 @@ export default function Home() {
           <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-600 sticky top-20 shadow-xl">
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-1 h-6 bg-gradient-to-b from-green-400 to-blue-400 rounded" />
-              Add Habit
+              Add Habitt
             </h2>
             <HabitForm onCreated={fetchHabits} />
           </div>
