@@ -168,7 +168,7 @@ export default function Home() {
           textColor: "text-purple-400",
           icon: "📈",
         },
-      }.map((stat, idx) => (
+      ].map((stat, idx) => (
           <div
             key={idx}
             className="group relative bg-gradient-to-br rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-slate-600/50 hover:border-slate-500 transition-all duration-300 hover:shadow-lg stagger-item"
