@@ -126,20 +126,20 @@ export default function Home() {
       : habits;
 
   return (
-    <div className="space-y-6 md:space-y-8 animate-fade-in px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="text-center space-y-2 animate-slide-in-down">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+    <div className="space-y-4 md:space-y-6 lg:space-y-8 animate-fade-in px-3 sm:px-4 lg:px-8 pb-4">
+      {/* Header - Mobile Optimized */}
+      <div className="text-center space-y-2 md:space-y-3 animate-slide-in-down pt-2">
+        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight">
           Habit Tracker
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto px-2">
+        <p className="text-xs xs:text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto px-2 leading-relaxed">
           Build better habits, one day at a time. Track your progress with
           visual insights.
         </p>
       </div>
 
-      {/* Enhanced Stats Cards with Stagger */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+      {/* Enhanced Stats Cards - Mobile Optimized */}
+      <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
         {[
           {
             value: stats.total,
@@ -172,77 +172,83 @@ export default function Home() {
         ].map((stat, idx) => (
           <div
             key={idx}
-            className="group relative bg-gradient-to-br rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-slate-600/50 hover:border-slate-500 transition-all duration-300 hover:shadow-lg stagger-item"
+            className="group relative bg-gradient-to-br rounded-lg md:rounded-xl lg:rounded-2xl p-2 xs:p-3 sm:p-4 md:p-6 border border-slate-600/50 hover:border-slate-500 transition-all duration-300 hover:shadow-lg stagger-item"
             style={{
               backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))`,
               backgroundSize: "100% 100%",
               animationDelay: `${idx * 50}ms`,
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-600/0 to-slate-600/0 group-hover:from-slate-600/10 group-hover:to-slate-600/5 rounded-lg sm:rounded-xl md:rounded-2xl transition-colors duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-600/0 to-slate-600/0 group-hover:from-slate-600/10 group-hover:to-slate-600/5 rounded-lg md:rounded-xl lg:rounded-2xl transition-colors duration-300" />
             <div className="relative">
-              <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${stat.textColor}`}>
+              <div
+                className={`text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${stat.textColor}`}
+              >
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm text-slate-400 mt-1 sm:mt-2">{stat.label}</div>
+              <div className="text-[10px] xs:text-xs sm:text-sm text-slate-400 mt-1 xs:mt-2 leading-tight">
+                {stat.label}
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Main Grid */}
-      <div className="grid lg:grid-cols-3 gap-4 md:gap-6">
-        {/* Left Column - Form */}
-        <div className="lg:col-span-1">
-          <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 border border-slate-600 lg:sticky lg:top-20 shadow-xl">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
-              <span className="w-1 h-5 md:h-6 bg-gradient-to-b from-green-400 to-blue-400 rounded" />
+      {/* Main Grid - Mobile Stacked Layout */}
+      <div className="grid lg:grid-cols-3 gap-3 xs:gap-4 md:gap-6">
+        {/* Left Column - Form - Full width on mobile */}
+        <div className="lg:col-span-1 order-2 lg:order-1">
+          <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg md:rounded-xl lg:rounded-2xl p-3 xs:p-4 sm:p-6 md:p-8 border border-slate-600 lg:sticky lg:top-4 shadow-xl">
+            <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 xs:mb-4 md:mb-6 flex items-center gap-2">
+              <span className="w-1 h-4 xs:h-5 md:h-6 bg-gradient-to-b from-green-400 to-blue-400 rounded" />
               Add Habit
             </h2>
             <HabitForm onCreated={fetchHabits} />
           </div>
         </div>
 
-        {/* Right Column - List & Heatmap */}
-        <div className="lg:col-span-2 space-y-4 md:space-y-6">
-          {/* Global Heatmap Card */}
-          <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg sm:rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-600 shadow-xl">
-            <h3 className="text-base sm:text-lg font-semibold text-white mb-3 md:mb-4 flex items-center gap-2">
-              <span className="w-1 h-5 bg-gradient-to-b from-green-400 to-blue-400 rounded" />
+        {/* Right Column - List & Heatmap - Full width on mobile */}
+        <div className="lg:col-span-2 space-y-3 xs:space-y-4 md:space-y-6 order-1 lg:order-2">
+          {/* Global Heatmap Card - Mobile Optimized */}
+          <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg md:rounded-xl lg:rounded-2xl p-3 xs:p-4 md:p-6 border border-slate-600 shadow-xl">
+            <h3 className="text-sm xs:text-base sm:text-lg font-semibold text-white mb-2 xs:mb-3 md:mb-4 flex items-center gap-2">
+              <span className="w-1 h-4 xs:h-5 bg-gradient-to-b from-green-400 to-blue-400 rounded" />
               Activity Overview
             </h3>
-            <div className="bg-slate-800/50 p-3 md:p-4 rounded-lg md:rounded-xl border border-slate-600/50 overflow-x-auto">
-              <Heatmap history={aggregatedHistory} />
+            <div className="bg-slate-800/50 p-2 xs:p-3 md:p-4 rounded-lg md:rounded-xl border border-slate-600/50 overflow-x-auto -mx-1 xs:-mx-2">
+              <div className="min-w-[600px] xs:min-w-full">
+                <Heatmap history={aggregatedHistory} />
+              </div>
             </div>
           </div>
 
-          {/* Completed Today Card */}
+          {/* Completed Today Card - Mobile Optimized */}
           {completedToday.length > 0 && (
-            <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg sm:rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-600 shadow-xl animate-slide-in-up">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4 mb-4">
-                <h3 className="text-base sm:text-lg font-semibold text-white flex items-center gap-2">
-                  <span className="w-1 h-5 bg-gradient-to-b from-green-400 to-emerald-400 rounded" />
+            <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg md:rounded-xl lg:rounded-2xl p-3 xs:p-4 md:p-6 border border-slate-600 shadow-xl animate-slide-in-up">
+              <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 xs:gap-3 md:gap-4 mb-3 xs:mb-4">
+                <h3 className="text-sm xs:text-base sm:text-lg font-semibold text-white flex items-center gap-2">
+                  <span className="w-1 h-4 xs:h-5 bg-gradient-to-b from-green-400 to-emerald-400 rounded" />
                   Completed Today
                 </h3>
-                <div className="text-xs sm:text-sm font-medium text-green-400">
+                <div className="text-xs xs:text-sm font-medium text-green-400">
                   {completedToday.length} / {habits.length}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 xs:gap-3">
                 {completedToday.map((h, idx) => (
                   <div
                     key={h._id}
-                    className="flex items-center justify-between bg-slate-800/50 p-2 sm:p-3 rounded-lg border border-green-600/30 hover:border-green-500/50 transition-all duration-200 stagger-item"
+                    className="flex items-center justify-between bg-slate-800/50 p-2 xs:p-3 rounded-lg border border-green-600/30 hover:border-green-500/50 transition-all duration-200 stagger-item"
                     style={{ animationDelay: `${idx * 30}ms` }}
                   >
-                    <div className="text-xs sm:text-sm font-medium text-green-400 flex items-center gap-2 truncate">
-                      <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                    <div className="text-xs xs:text-sm font-medium text-green-400 flex items-center gap-2 min-w-0 flex-1">
+                      <span className="w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
                       <span className="truncate">{h.name}</span>
                     </div>
                     <button
                       onClick={() => handleToggle(h._id)}
-                      className="ml-2 px-2 sm:px-3 py-1 text-xs font-medium rounded-lg bg-green-600/20 text-green-400 hover:bg-green-600/40 border border-green-600/50 hover:border-green-500 transition-all duration-200 flex-shrink-0"
+                      className="ml-2 px-2 xs:px-3 py-1 text-xs font-medium rounded-lg bg-green-600/20 text-green-400 hover:bg-green-600/40 border border-green-600/50 hover:border-green-500 transition-all duration-200 flex-shrink-0 whitespace-nowrap"
                     >
                       Undo
                     </button>
@@ -252,16 +258,16 @@ export default function Home() {
             </div>
           )}
 
-          {/* Habits List Card with View Mode Toggle */}
-          <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg sm:rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-600 shadow-xl">
+          {/* Habits List Card with View Mode Toggle - Mobile Optimized */}
+          <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg md:rounded-xl lg:rounded-2xl p-3 xs:p-4 md:p-6 border border-slate-600 shadow-xl">
             {/* Header with Toggle Tabs */}
-            <div className="flex flex-col gap-3 md:gap-4 mb-4 md:mb-6">
+            <div className="flex flex-col gap-2 xs:gap-3 md:gap-4 mb-3 xs:mb-4 md:mb-6">
               <div>
-                <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-                  <span className="w-1 h-5 md:h-6 bg-gradient-to-b from-blue-400 to-purple-400 rounded" />
+                <h2 className="text-base xs:text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                  <span className="w-1 h-4 xs:h-5 md:h-6 bg-gradient-to-b from-blue-400 to-purple-400 rounded" />
                   Your Habits
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-400 mt-2">
+                <p className="text-xs xs:text-sm text-slate-400 mt-1 xs:mt-2">
                   {habitsToShow.length} habit
                   {habitsToShow.length !== 1 ? "s" : ""} to track
                 </p>
@@ -271,8 +277,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* View Mode Toggle Tabs */}
-            <div className="flex gap-2 mb-4 md:mb-6 flex-wrap">
+            {/* View Mode Toggle Tabs - Mobile Optimized */}
+            <div className="flex gap-1 xs:gap-2 mb-3 xs:mb-4 md:mb-6 flex-wrap">
               {[
                 {
                   key: "all",
@@ -293,28 +299,30 @@ export default function Home() {
                 <button
                   key={tab.key}
                   onClick={() => setViewMode(tab.key)}
-                  className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 ${
+                  className={`px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 rounded-lg font-medium text-[10px] xs:text-xs sm:text-sm transition-all duration-300 flex-1 xs:flex-none min-w-0 ${
                     viewMode === tab.key
                       ? `bg-gradient-to-r ${tab.color} text-white shadow-lg`
                       : "bg-slate-800/50 text-slate-400 hover:text-slate-300 border border-slate-600/50 hover:border-slate-500"
                   }`}
                 >
-                  {tab.label}
+                  <span className="truncate">{tab.label}</span>
                 </button>
               ))}
             </div>
 
-            {/* Content based on view mode */}
+            {/* Content based on view mode - Mobile Optimized */}
             {loading ? (
-              <div className="flex flex-col items-center justify-center py-12 md:py-16">
-                <div className="animate-spin rounded-full h-10 md:h-12 w-10 md:w-12 border-2 border-slate-600 border-t-blue-400 mb-4" />
-                <div className="text-sm md:text-base text-slate-400">Loading habits...</div>
+              <div className="flex flex-col items-center justify-center py-8 xs:py-10 md:py-12 lg:py-16">
+                <div className="animate-spin rounded-full h-8 xs:h-10 md:h-12 w-8 xs:w-10 md:w-12 border-2 border-slate-600 border-t-blue-400 mb-3 xs:mb-4" />
+                <div className="text-xs xs:text-sm md:text-base text-slate-400">
+                  Loading habits...
+                </div>
               </div>
             ) : habitsToShow.length === 0 ? (
-              <div className="text-center py-12 md:py-16">
-                <div className="text-slate-500 mb-4">
+              <div className="text-center py-8 xs:py-10 md:py-12 lg:py-16">
+                <div className="text-slate-500 mb-3 xs:mb-4">
                   <svg
-                    className="w-12 h-12 md:w-16 md:h-16 mx-auto opacity-50"
+                    className="w-10 xs:w-12 md:w-16 h-10 xs:h-12 md:h-16 mx-auto opacity-50"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -327,12 +335,12 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-slate-300 mb-2">
+                <h3 className="text-sm xs:text-base sm:text-lg font-semibold text-slate-300 mb-1 xs:mb-2">
                   {viewMode === "active" && "No active habits"}
                   {viewMode === "completed" && "No habits completed yet"}
                   {viewMode === "all" && "No habits yet"}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-400 px-2">
+                <p className="text-xs xs:text-sm text-slate-400 px-2 leading-relaxed">
                   {viewMode === "all" &&
                     "Create your first habit to get started"}
                   {viewMode === "active" && "All habits completed! Great job!"}
@@ -343,8 +351,8 @@ export default function Home() {
             ) : (
               <div className="animate-fade-in">
                 {viewMode === "active" && (
-                  <div className="space-y-4">
-                    <div className="text-xs font-semibold text-amber-400/70 uppercase tracking-wider mb-4">
+                  <div className="space-y-3 xs:space-y-4">
+                    <div className="text-[10px] xs:text-xs font-semibold text-amber-400/70 uppercase tracking-wider mb-3 xs:mb-4">
                       {activeHabits.length} Active
                     </div>
                     <HabitList
@@ -356,8 +364,8 @@ export default function Home() {
                 )}
 
                 {viewMode === "completed" && (
-                  <div className="space-y-4">
-                    <div className="text-xs font-semibold text-green-400/70 uppercase tracking-wider mb-4">
+                  <div className="space-y-3 xs:space-y-4">
+                    <div className="text-[10px] xs:text-xs font-semibold text-green-400/70 uppercase tracking-wider mb-3 xs:mb-4">
                       {completedToday.length} Completed Today
                     </div>
                     <HabitList
@@ -369,13 +377,13 @@ export default function Home() {
                 )}
 
                 {viewMode === "all" && (
-                  <div className="space-y-6">
+                  <div className="space-y-4 xs:space-y-6">
                     {/* Active Habits Section */}
                     {activeHabits.length > 0 && (
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-1 h-5 bg-gradient-to-b from-amber-400 to-orange-500 rounded" />
-                          <h4 className="text-sm font-bold text-amber-300 uppercase tracking-wider">
+                      <div className="space-y-2 xs:space-y-3">
+                        <div className="flex items-center gap-2 mb-2 xs:mb-3">
+                          <div className="w-1 h-4 xs:h-5 bg-gradient-to-b from-amber-400 to-orange-500 rounded" />
+                          <h4 className="text-xs xs:text-sm font-bold text-amber-300 uppercase tracking-wider">
                             Active Habits ({activeHabits.length})
                           </h4>
                         </div>
@@ -389,15 +397,15 @@ export default function Home() {
 
                     {/* Divider */}
                     {activeHabits.length > 0 && completedToday.length > 0 && (
-                      <div className="border-t border-slate-600/30 my-6" />
+                      <div className="border-t border-slate-600/30 my-4 xs:my-6" />
                     )}
 
                     {/* Completed Habits Section */}
                     {completedToday.length > 0 && (
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-1 h-5 bg-gradient-to-b from-green-400 to-emerald-500 rounded" />
-                          <h4 className="text-sm font-bold text-green-300 uppercase tracking-wider">
+                      <div className="space-y-2 xs:space-y-3">
+                        <div className="flex items-center gap-2 mb-2 xs:mb-3">
+                          <div className="w-1 h-4 xs:h-5 bg-gradient-to-b from-green-400 to-emerald-500 rounded" />
+                          <h4 className="text-xs xs:text-sm font-bold text-green-300 uppercase tracking-wider">
                             Completed Today ({completedToday.length})
                           </h4>
                         </div>
