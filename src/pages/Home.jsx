@@ -140,35 +140,36 @@ export default function Home() {
 
       {/* Enhanced Stats Cards with Stagger */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-        {{
-          value: stats.total,
-          label: "Total Habits",
-          bgColor: "from-slate-700 to-slate-800",
-          textColor: "text-white",
-          icon: "📊",
-        },
-        {
-          value: stats.completed,
-          label: "Completed Today",
-          bgColor: "from-green-900/30 to-green-800/20",
-          textColor: "text-green-400",
-          icon: "✓",
-        },
-        {
-          value: stats.active,
-          label: "Active Habits",
-          bgColor: "from-blue-900/30 to-blue-800/20",
-          textColor: "text-blue-400",
-          icon: "⚡",
-        },
-        {
-          value: `${stats.completionRate}%`,
-          label: "Completion Rate",
-          bgColor: "from-purple-900/30 to-purple-800/20",
-          textColor: "text-purple-400",
-          icon: "📈",
-        },
-      ].map((stat, idx) => (
+        { [
+          {
+            value: stats.total,
+            label: "Total Habits",
+            bgColor: "from-slate-700 to-slate-800",
+            textColor: "text-white",
+            icon: "📊",
+          },
+          {
+            value: stats.completed,
+            label: "Completed Today",
+            bgColor: "from-green-900/30 to-green-800/20",
+            textColor: "text-green-400",
+            icon: "✓",
+          },
+          {
+            value: stats.active,
+            label: "Active Habits",
+            bgColor: "from-blue-900/30 to-blue-800/20",
+            textColor: "text-blue-400",
+            icon: "⚡",
+          },
+          {
+            value: `${stats.completionRate}%`,
+            label: "Completion Rate",
+            bgColor: "from-purple-900/30 to-purple-800/20",
+            textColor: "text-purple-400",
+            icon: "📈",
+          }
+        ].map((stat, idx) => (
           <div
             key={idx}
             className="group relative bg-gradient-to-br rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-slate-600/50 hover:border-slate-500 transition-all duration-300 hover:shadow-lg stagger-item"
